@@ -1,22 +1,32 @@
-import React from 'react'
+import React, { forwardRef, useImperativeHandle } from 'react'
 import { Tag } from 'antd';
 import { SyncOutlined } from '@ant-design/icons';
+import { BILI } from '~/config';
 
-const Title = (props) => {
-  const { resetData, TITLE, pathname, loading } = props;
+const { TITLE } = BILI;
 
+const Title = forwardRef((props, ref) => {
+  const { pathname, loading } = props
   const title = TITLE[pathname];
 
-  return (
-    <div className="content-header">
-      <h3 className="title">{ title }</h3>
+  useImperativeHandle(ref, () => ({
+    getData: () => console.log(0)
+  }))
 
-      <Tag color="green" onClick={ resetData } className="refresh">
-        <span className="text">刷新</span>
-        <SyncOutlined spin={ loading } />
-      </Tag>
-    </div>
+  return (
+    title
+      ? (
+        <div className="content-header">
+          <h3 className="title">{ title }</h3>
+
+          <Tag color="green" className="refresh">
+            <span className="text">刷新</span>
+            <SyncOutlined spin={ loading } />
+          </Tag>
+        </div>
+      )
+      : null
   )
-}
+})
 
 export default Title

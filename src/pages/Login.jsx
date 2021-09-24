@@ -1,24 +1,20 @@
 import React, { createRef, useEffect } from 'react'
 import LoginLogo from '~/components/Login/Logo'
 import LoginForm from '~/components/Login/Form'
-import bgImg from '~/assets/images/bg.gif'
 import '~/components/Login/index.scss'
+import Crawler from '~/config/cover/crawler'
+
+const canvas = new Crawler(document.body, 0)
 
 const Login = () => {
   const ref = createRef(null);
 
-  const loadImg = (dom) => {
-    const oImg = new Image();
-
-    oImg.src = bgImg;
-    oImg.className = 'bg-img';
-    oImg.onload = () => dom.appendChild(oImg);
-  }
-
   useEffect(() => {
-    loadImg(ref.current);
-  })
-
+    canvas.handleCanvasState(true)
+    return () => {
+      canvas.handleCanvasState(false)
+    }
+  }, [])
 
   return (
     <div className="container" ref={ ref }>

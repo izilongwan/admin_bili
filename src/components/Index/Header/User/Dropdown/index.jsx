@@ -3,19 +3,17 @@ import { Menu, message, Popconfirm } from 'antd';
 import { LogoutOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
 import { logout } from '~/api/user'
-import { MESSAGE } from '~/config'
-import { asyncFunc } from '~/utils/tools'
-
-const { SERVER_ERROR } = MESSAGE;
 
 const Dropdown = () => {
   const { push } = useHistory();
 
   const hanldeLogout = async () => {
-    const [err, res] = await asyncFunc(logout);
+    const [err, res] = await logout();
 
     if (err) {
-      message.error(SERVER_ERROR);
+      const { code, msg } = err
+      message.error(msg);
+      code === -1 && push('/login')
       return;
     }
 

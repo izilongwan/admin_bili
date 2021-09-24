@@ -1,21 +1,17 @@
 import request from '~/utils/request'
 import API from './config'
 
-export const login = (data) =>
+const req = (method, params) =>
   request({
-    url: API.USER_LOGIN_ACTION,
+    url: API.COMMON_API,
     method: 'post',
-    data
+    data: {
+      module: 'user',
+      method,
+      params
+    }
   })
 
-export const checkStatus = () =>
-  request({
-    url: API.USER_CHECK_STATUS,
-    method: 'get'
-  })
+export const login = (params) => req('login', params)
 
-export const logout = () =>
-  request({
-    url: API.USER_LOGOUT_ACTION,
-    method: 'get'
-  })
+export const logout = (params) => req('logout', params)

@@ -2,16 +2,29 @@ html,
 body,
 .app,
 .container {
-  position: relative;
-  min-width: 800px;
-  height: 100%;
-  overflow: hidden;
+	position: relative;
+	min-width: 800px;
+	height: 100%;
+	overflow: hidden;
 }
 
 .container {
-  background-color: #f1f1f1;
+	background-color: #f1f1f1;
 }
 
 ::-webkit-scrollbar {
-  display: none;
+	display: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	transition: background-color 5000s;
+	background-clip: content-box;
+	-webkit-text-fill-color: #fff !important;
+}
+
+input {
+  background-color: transparent !important;
 }

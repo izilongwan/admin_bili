@@ -3,7 +3,8 @@ import loadable from 'react-loadable';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
+  // Redirect,
 } from 'react-router-dom';
 import loading from '~/components/Common/Loading';
 
@@ -17,76 +18,32 @@ const Index = loadable({
   loading
 });
 
-
-const Carousel = loadable({
-  loader: () => import('~/pages/Index/Carousel'),
-  loading
-});
-
-const Promote = loadable({
-  loader: () => import('~/pages/Index/Promote'),
-  loading
-});
-
-const ESports = loadable({
-  loader: () => import('~/pages/Index/ESports'),
-  loading
-});
-
-const Live = loadable({
-  loader: () => import('~/pages/Index/Live'),
-  loading
-});
-
-const Full = loadable({
-  loader: () => import('~/pages/Index/Full'),
-  loading
-});
-
-const Bangumi = loadable({
-  loader: () => import('~/pages/Index/Bangumi'),
-  loading
-});
-
-const Cinema = loadable({
-  loader: () => import('~/pages/Index/Cinema'),
-  loading
-});
-
-const Origin = loadable({
-  loader: () => import('~/pages/Index/Origin'),
-  loading
-});
-
-const Rookie = loadable({
-  loader: () => import('~/pages/Index/Rookie'),
-  loading
-});
-
-const Crawler = loadable({
-  loader: () => import('~/pages/Index/Crawler'),
-  loading
-});
-
 const NotFound = loadable({
   loader: () => import('~/pages/Index/404'),
+  loading
+});
+
+const Common = loadable({
+  loader: () => import('~/pages/Index/Common'),
   loading
 });
 
 const render = () => (
   <Index>
     <Switch>
-      <Route path="/" component={ Carousel } strict exact />
-      <Route path="/carousel" component={ Carousel } />
-      <Route path="/promote" component={ Promote } />
-      <Route path="/e_sports" component={ ESports } />
-      <Route path="/live" component={ Live } />
-      <Route path="/full" component={ Full } />
-      <Route path="/origin" component={ Origin } />
-      <Route path="/cinema" component={ Cinema } />
-      <Route path="/bangumi" component={ Bangumi } />
-      <Route path="/rookie" component={ Rookie } />
-      <Route path="/crawler" component={ Crawler } />
+      <Route path="/" component={ Common } strict exact />
+      <Route path="/carousel" component={ Common } />
+      <Route path="/record" component={ Common } />
+      <Route path="/promote" component={ Common } />
+      <Route path="/e_sports" component={ Common } />
+      <Route path="/live" component={ Common } />
+      <Route path="/full" component={ Common } />
+      <Route path="/origin" component={ Common } />
+      <Route path="/movie" component={ Common } />
+      <Route path="/bangumi" component={ Common } />
+      <Route path="/rookie" component={ Common } />
+      <Route path="/crawler" component={ Common } />
+      {/* <Redirect from="/" to="/crawler" /> */}
       <Route component={ NotFound } />
     </Switch>
   </Index>

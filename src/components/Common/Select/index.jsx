@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Select, Tag } from 'antd';
 import { BILI } from '~/config'
-import Context from '~/components/Index/Context'
+import { common } from '~/components/Index/Context'
 
 const { Option } = Select;
 const { FIELD } = BILI;
@@ -24,7 +24,7 @@ const tagRender = (props) => {
 
 const SelectTags = ({ data }) => {
   const { tags, tagsLoading } = data;
-  const { onSelectChange } = useContext(Context);
+  const { onSelectChange } = useContext(common);
 
   return (
     <Select

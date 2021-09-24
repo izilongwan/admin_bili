@@ -1,16 +1,19 @@
 import request from '~/utils/request'
 import API from './config'
 
-export const crawlData = (data) =>
+const req = (method, params) => 
   request({
-    url: API.CRAWL_DATA,
+    url: API.COMMON_API,
     method: 'post',
-    data
+    data: {
+      module: 'crawler',
+      method,
+      params
+    }
   })
 
-export const autoAsyncData = (data) =>
-  request({
-    url: API.AUTO_ASYNC_DATA,
-    method: 'post',
-    data
-  })
+export const crawlerData = (params) => req('crawlerData', params)
+
+export const crawlerSettings = (params) => req('crawlerSettings', params)
+
+export const crawlerSettingsUpdate = (params) => req('crawlerSettingsUpdate', params)

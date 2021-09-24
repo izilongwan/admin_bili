@@ -1,13 +1,10 @@
 import { LoginOutlined } from '@ant-design/icons';
 import { Button, Form, Input, message } from 'antd';
 import * as API from '~/api/user';
-import { MESSAGE } from '~/config';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router';
-import { asyncFunc, makeCrypto } from '~/utils/tools';
+import { makeCrypto } from '~/utils/tools';
 import { CAPTCHA } from '~/api/config';
-
-const { SERVER_ERROR } = MESSAGE;
 
 const layout = {
   labelCol: { span: 8 },
@@ -62,43 +59,35 @@ const Login = () => {
   const onFinish = async (values) => {
     setLoading(true);
     values.password = makeCrypto(values.password);
-    const [err, res] = await asyncFunc(() =>
-      API.login(values)
-    );
+    const [err, res] = await API.login(values)
+
+    setLoading(false);
+
+    const { current } = formRef
+    const resetFields = [
+      { name: 'password', value: '' },
+      { name: 'captcha', value: '' },
+    ]
 
     if (err) {
-      message.error(SERVER_ERROR);
-      setLoading(false);
+      const { code, msg } = err;
+
+      current.setFields(resetFields)
+      message.error(msg)
+      code === -1 && push('/login');
       return;
     }
 
     const { code, msg } = res;
 
-    if (code === 0) {
-      message.success(msg);
-      push('/');
-      setLoading(false);
-      return;
+    if (code !== 0) {
+      current.setFields(resetFields)
+      message.error(msg)
+      return
     }
 
-    setLoading(false);
-    message.error(msg);
-  };
-
-  const checkUserStatus = async () => {
-    const [err, res] = await asyncFunc(
-      API.checkStatus
-    );
-
-    if (err) {
-      message.error(SERVER_ERROR);
-      setLoading(false);
-      return;
-    }
-
-    const { code } = res;
-
-    code === 0 && push('/');
+    message.success(msg)
+    push('/')
   };
 
   const genImgSrc = () => `${ CAPTCHA }?${ Math.random() }`;
@@ -106,13 +95,12 @@ const Login = () => {
   const refreshImg = () =>
     (imgRef.current.src = genImgSrc());
 
-  useEffect(() => {
-    checkUserStatus();
-  });
+  const formRef = useRef(null)
 
   return (
     <Form
       { ...layout }
+      ref={ formRef }
       initialValues={ initialValues }
       name="basic"
       onFinish={ onFinish }
@@ -122,6 +110,7 @@ const Login = () => {
         label="Account"
         name="account"
         hasFeedback
+        className="login-input-item"
         rules={ rules.account }>
         <Input
           maxLength="5"
@@ -141,7 +130,7 @@ const Login = () => {
         />
       </Form.Item>
 
-      <Form.Item className="captcha-wrap" name="captcha" label="Captcha">
+      <Form.Item className="captcha-wrap" label="Captcha">
         <Form.Item
           rules={ rules.captcha }
           name="captcha">

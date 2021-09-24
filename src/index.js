@@ -11,13 +11,13 @@ import App from './App';
 import store from './store';
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={ store }>
       <ConfigProvider locale={ zhCN }>
         <App />
       </ConfigProvider>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
+  // </React.StrictMode>,
 
   document.getElementById('root')
 );

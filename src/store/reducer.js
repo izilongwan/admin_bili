@@ -1,5 +1,5 @@
 const initialState = {
-  user: null
+  user: 'izilong'
 }
 
 export default (state = initialState, { type, data }) => {

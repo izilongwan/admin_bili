@@ -1,69 +1,73 @@
 .container {
-  background-color: #607d8b;
+	background-color: #607d8b;
 
-  .bg-img {
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-  }
+	.bg-img {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		height: 100%;
+	}
 
-  .login-wrap {
-    position: absolute;
-    z-index: 2;
-    top: 50%;
-    left: 50%;
-    padding: 20px 30px 0;
-    border-radius: 10px;
-    transform: translate(-50%, -50%);
-    background-color: rgba(250, 250, 250, 0.3);
+	.login-wrap {
+		position: absolute;
+		z-index: 2;
+		top: 50%;
+		left: 50%;
+		padding: 20px 30px 0 190px;
+		border-radius: 10px;
+		transform: translate(-50%, -50%);
+		background-color: rgba(250, 250, 250, 0.3);
 
-    .login-logo-wrap {
-      position: absolute;
-      z-index: -1;
-      top: -64%;
-      left: 50%;
-      width: 200px;
-      transform: translateX(-50%);
-    }
+		.login-logo-wrap {
+			position: absolute;
+			top: 50%;
+			left: 15px;
+			width: 200px;
+			transform: translateY(-50%);
+		}
 
-    .login-form {
-      position: relative;
-      z-index: 1;
+		.login-form {
+			position: relative;
+			z-index: 1;
 
-      label,
-      input {
-        color: #fff;
-      }
+			label,
+			input {
+				color: #fff;
+			}
 
-      .captcha-wrap {
-        height: 32px;
+			.login-input-item {
+				width: 350px;
+			}
 
-        label::before {
-          display: inline-block;
-          margin-right: 4px;
-          color: #ff4d4f;
-          font-size: 14px;
-          font-family: SimSun, sans-serif;
-          line-height: 1;
-          content: '*';
-        }
-      }
+			.captcha-wrap {
+				height: 32px;
 
-      .captcha-cell {
-        position: absolute;
-        right: 1px;
-        top: 0;
-        width: 82px;
-      }
+				label::before {
+					display: inline-block;
+					margin-right: 4px;
+					color: #ff4d4f;
+					font-size: 14px;
+					font-family: SimSun, sans-serif;
+					line-height: 1;
+					content: 'all';
+				}
+			}
 
-      input,
-      .ant-input-affix-wrapper {
-        background-color: transparent;
-      }
-    }
-  }
+			.captcha-cell {
+				position: absolute;
+				right: 1px;
+				top: 0;
+				width: 82px;
+			}
+
+			input,
+			.ant-input-affix-wrapper,
+			.ant-input-affix-wrapper:hover {
+				background-color: transparent !important;
+			}
+		}
+	}
 }

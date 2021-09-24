@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 import { baseURL } from '~/config';
+import { asyncFunc } from './tools'
 
 const service = axios.create({
   baseURL,
@@ -8,4 +9,4 @@ const service = axios.create({
   withCredentials: true
 })
 
-export default service;
+export default async (...args) => asyncFunc(() => service(...args))
