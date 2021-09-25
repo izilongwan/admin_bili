@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { baseURL } from '~/config';
+import { baseURL } from '@/config';
 import { asyncFunc } from './tools'
 
 const service = axios.create({

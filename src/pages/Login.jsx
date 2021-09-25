@@ -1,8 +1,8 @@
 import React, { createRef, useEffect } from 'react'
-import LoginLogo from '~/components/Login/Logo'
-import LoginForm from '~/components/Login/Form'
-import '~/components/Login/index.scss'
-import Crawler from '~/config/cover/crawler'
+import LoginLogo from '@/components/Login/Logo'
+import LoginForm from '@/components/Login/Form'
+import '@/components/Login/index.scss'
+import Crawler from '@/config/cover/crawler'
 
 const canvas = new Crawler(document.body, 0)
 

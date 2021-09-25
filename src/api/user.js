@@ -1,4 +1,4 @@
-import request from '~/utils/request'
+import request from '@/utils/request'
 import API from './config'
 
 const req = (method, params) =>

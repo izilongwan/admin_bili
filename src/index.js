@@ -4,9 +4,9 @@ import zhCN from 'antd/es/locale/zh_CN';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import '~/assets/styles/resets.css';
-import '~/assets/styles/common.css';
-import '~/assets/styles/fonts.css';
+import '@/assets/styles/resets.css';
+import '@/assets/styles/common.css';
+import '@/assets/styles/fonts.css';
 import App from './App';
 import store from './store';
 

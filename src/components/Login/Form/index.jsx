@@ -1,10 +1,10 @@
 import { LoginOutlined } from '@ant-design/icons';
 import { Button, Form, Input, message } from 'antd';
-import * as API from '~/api/user';
+import * as API from '@/api/user';
 import React, { useState, useRef } from 'react';
 import { useHistory } from 'react-router';
-import { makeCrypto } from '~/utils/tools';
-import { CAPTCHA } from '~/api/config';
+import { makeCrypto } from '@/utils/tools';
+import { CAPTCHA } from '@/api/config';
 
 const layout = {
   labelCol: { span: 8 },

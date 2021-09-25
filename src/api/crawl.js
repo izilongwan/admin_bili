@@ -1,7 +1,7 @@
-import request from '~/utils/request'
+import request from '@/utils/request'
 import API from './config'
 
-const req = (method, params) => 
+const req = (method, params) =>
   request({
     url: API.COMMON_API,
     method: 'post',

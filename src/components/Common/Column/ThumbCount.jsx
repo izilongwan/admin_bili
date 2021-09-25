@@ -1,5 +1,5 @@
 import React from 'react';
-import { sorter } from '~/utils/tools';
+import { sorter } from '@/utils/tools';
 import { Tag } from 'antd';
 
 

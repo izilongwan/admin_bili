@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { common } from '~/components/Index/Context'
+import { common } from '@/components/Index/Context'
 
 function PageItemNum (item, record, index, c) {
   const { pagination: { current, pageSize } } = useContext(common);

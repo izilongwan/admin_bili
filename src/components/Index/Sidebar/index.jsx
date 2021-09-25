@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
-import { SIDEBAR_MENU } from '~/config';
+import { SIDEBAR_MENU } from '@/config';
 import './index.scss'
 
 const { Sider } = Layout;

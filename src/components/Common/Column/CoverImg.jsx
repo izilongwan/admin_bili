@@ -1,6 +1,6 @@
 import React from 'react';
 import LazyLoad from 'react-lazy-load';
-import lazyImg from '~/assets/images/cover-img-lazy.png';
+import lazyImg from '@/assets/images/cover-img-lazy.png';
 
 export const CoverImg = {
   title: () => <em className="tb-title">封面图片</em>,

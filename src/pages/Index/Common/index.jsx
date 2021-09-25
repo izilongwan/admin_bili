@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useLocation } from 'react-router';
-import Title from '~/components/Index/Common/Title'
-import Content from '~/components/Index/Common/Content'
+import Title from '@/components/Index/Common/Title'
+import Content from '@/components/Index/Common/Content'
 
 const CommonContent = (props) => {
   let { pathname } = useLocation();

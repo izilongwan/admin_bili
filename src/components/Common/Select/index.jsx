@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Select, Tag } from 'antd';
-import { BILI } from '~/config'
-import { common } from '~/components/Index/Context'
+import { BILI } from '@/config'
+import { common } from '@/components/Index/Context'
 
 const { Option } = Select;
 const { FIELD } = BILI;

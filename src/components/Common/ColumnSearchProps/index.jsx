@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useCallback, useState } from 'react';
 import { Button, Input } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-import { common } from '~/components/Index/Context'
+import { common } from '@/components/Index/Context'
 import { useLocation } from 'react-router'
 
 let ref = null

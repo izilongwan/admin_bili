@@ -1,6 +1,6 @@
 import { Layout } from 'antd';
-import LayHeader from '~/components/Index/Header';
-import LaySidebar from '~/components/Index/Sidebar';
+import LayHeader from '@/components/Index/Header';
+import LaySidebar from '@/components/Index/Sidebar';
 import React from 'react';
 import { useLocation } from 'react-router';
 import './index.scss';

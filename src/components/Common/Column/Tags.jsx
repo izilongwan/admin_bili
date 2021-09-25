@@ -1,6 +1,6 @@
 import React from 'react';
 import { SelectTags } from './SelectTags';
-import { BILI } from '~/config'
+import { BILI } from '@/config'
 
 const { FIELD } = BILI
 

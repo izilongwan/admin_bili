@@ -1,7 +1,7 @@
 import React, { forwardRef, useImperativeHandle } from 'react'
 import { Tag } from 'antd';
 import { SyncOutlined } from '@ant-design/icons';
-import { BILI } from '~/config';
+import { BILI } from '@/config';
 
 const { TITLE } = BILI;
 

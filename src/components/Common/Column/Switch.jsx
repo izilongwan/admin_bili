@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Switch } from 'antd';
 import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
-import { common } from '~/components/Index/Context'
+import { common } from '@/components/Index/Context'
 
 const AutoAsyncSwitch = (item) => {
   const { switchLoading, switch_type } = item

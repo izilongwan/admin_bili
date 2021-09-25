@@ -1,6 +1,6 @@
 import React from 'react';
 import LazyLoad from 'react-lazy-load';
-import lazyImg from '~/assets/images/avatar-lazy.webp';
+import lazyImg from '@/assets/images/avatar-lazy.webp';
 
 export const UpImg = {
   title: () => <em className="tb-title">Up主头像</em>,

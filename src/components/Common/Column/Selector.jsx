@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Select } from 'antd';
-import { DURATION } from '~/config'
-import { common } from '~/components/Index/Context'
+import { DURATION } from '@/config'
+import { common } from '@/components/Index/Context'
 
 const { Option } = Select;
 

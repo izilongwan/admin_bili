@@ -2,7 +2,7 @@ import React from 'react';
 import { Menu, message, Popconfirm } from 'antd';
 import { LogoutOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
-import { logout } from '~/api/user'
+import { logout } from '@/api/user'
 
 const Dropdown = () => {
   const { push } = useHistory();

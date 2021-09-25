@@ -7,13 +7,13 @@ import React, {
 } from 'react';
 import { Table } from 'antd';
 import { message } from 'antd';
-import * as APICrawl from '~/api/crawl';
-import * as APIData from '~/api/data';
-import { BILI } from '~/config';
+import * as APICrawl from '@/api/crawl';
+import * as APIData from '@/api/data';
+import { BILI } from '@/config';
 // import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { findParent } from '~/utils/tools';
-import { common } from '~/components/Index/Context';
+import { findParent } from '@/utils/tools';
+import { common } from '@/components/Index/Context';
 import {
   ColumnsDefault2,
   ColumnsDefault,
@@ -24,7 +24,7 @@ import {
   ColumnsPromote,
   ColumnsOrigin,
   ColumnsRecord,
-} from '~/components/Common/Columns'
+} from '@/components/Common/Columns'
 
 const { CRAWLER } = BILI;
 
