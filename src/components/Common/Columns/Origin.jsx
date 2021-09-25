@@ -6,8 +6,6 @@ import {
   PlayCount,
   PopupCount,
   Tags,
-  LatestTip,
-  FavCount,
   Status,
   Score,
 } from '../Column';

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button, Tag } from 'antd';
 import { NumId, AutoAsyncSwitch, Selector, UpdatedAt } from '../Column';
-import { SyncOutlined, CheckCircleOutlined } from '@ant-design/icons';
 
 
 const ColumnsCrawler = [

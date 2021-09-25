@@ -77,7 +77,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js"
+    "build:local": "node scripts/build.js"
   },
   "eslintConfig": {
     "extends": "react-app"
