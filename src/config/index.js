@@ -3,7 +3,7 @@ const m = 60 * 1000,
 
 export const baseURL = process.env.NODE_ENV === 'development'
   ? 'http://localhost:8000/api'
-  : 'bili-izilongwan.vercel.app';
+  : 'https://bili-izilongwan.vercel.app/api';
 
 export const SIDEBAR_MENU = [
   { text: '数据爬虫', path: '/crawler' },
