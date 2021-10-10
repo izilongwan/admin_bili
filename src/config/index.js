@@ -2,7 +2,7 @@ const m = 60 * 1000,
       h = 60 * m;
 
 export const baseURL = process.env.NODE_ENV === 'development'
-  ? 'http://localhost:8000/api'
+  ? 'http://localhost:5001/api'
   : 'http://47.107.72.91:5001/api';
 
 export const SIDEBAR_MENU = [

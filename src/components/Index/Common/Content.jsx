@@ -135,6 +135,7 @@ const CommonContent = forwardRef((props, ref) => {
       ? res.data.map((item, idx) => {
 
         return {
+          text: '爬取',
           ...CRAWLER[idx],
           ...item,
           statusLoading: false,
@@ -428,7 +429,7 @@ const CommonContent = forwardRef((props, ref) => {
         loading={ loading }
         columns={ columns }
         onRow={ (data) => ({ onClick: (e) => onTableClick(e, data) }) }
-        scroll={ { y: 530 } }
+        scroll={ { y: 'calc(100vh - 270px)' } }
         rowKey={ ({ id }) => id }
         pagination={ pagination }
         dataSource={ data }
