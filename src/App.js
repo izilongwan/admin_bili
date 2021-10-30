@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  // Redirect,
+  Redirect,
 } from 'react-router-dom';
 import loading from '@/components/Common/Loading';
 
@@ -53,6 +53,8 @@ const App = () => {
   return (
     <Router>
       <Switch>
+        <Redirect exact strict from="/" to="/login" />
+
         <Route path="/login" component={ Login } />
 
         <Route path="/" render={ render } />

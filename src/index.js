@@ -10,6 +10,8 @@ import '@/assets/styles/fonts.css';
 import App from './App';
 import store from './store';
 
+module && module.hot && module.hot.accept()
+
 ReactDOM.render(
   <Provider store={ store }>
     <ConfigProvider locale={ zhCN }>

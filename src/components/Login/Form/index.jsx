@@ -87,7 +87,7 @@ const Login = () => {
     }
 
     message.success(msg)
-    push('/')
+    push('/crawler')
   };
 
   const genImgSrc = () => `${ CAPTCHA }?${ Math.random() }`;
