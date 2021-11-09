@@ -146,7 +146,7 @@ const CommonContent = forwardRef((props, ref) => {
       })
       : res.data.map((item, idx) => ({
         ...item,
-        tags: item.tags ? JSON.parse(item.tags) : item.tags,
+        tags: item.tags || [],
         statusLoading: false,
         tagsLoading: false,
         crawlLoading: false,
