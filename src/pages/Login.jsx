@@ -1,20 +1,39 @@
 import React, { createRef, useEffect } from 'react'
+import { useHistory } from 'react-router-dom';
 import LoginLogo from '@/components/Login/Logo'
 import LoginForm from '@/components/Login/Form'
 import '@/components/Login/index.scss'
 import Crawler from '@/config/cover/crawler'
+import { checkLoginState } from '../api/user'
 
 const canvas = new Crawler(document.body, 0)
 
 const Login = () => {
   const ref = createRef(null);
+  const { push } = useHistory();
 
   useEffect(() => {
+    ;(async () => {
+      const [err, ret] = await checkLoginState()
+
+      if (err) {
+        return
+      }
+
+      const { code, msg } = ret
+
+      if (code !== 0) {
+        return
+      }
+
+      push('/crawler')
+    })();
+
     canvas.handleCanvasState(true)
     return () => {
       canvas.handleCanvasState(false)
     }
-  }, [])
+  }, [push])
 
   return (
     <div className="container" ref={ ref }>

@@ -15,3 +15,5 @@ const req = (method, params) =>
 export const login = (params) => req('login', params)
 
 export const logout = (params) => req('logout', params)
+
+export const checkLoginState = (params) => req('checkLoginState', params)
