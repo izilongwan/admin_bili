@@ -1,7 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
+import { checkLoginState } from '../../../api/user'
 import './indes.scss'
 
 const NotFound = () => {
+  const { push } = useHistory()
+
+  useEffect(() => {
+    ;(async () => {
+      const [err, ret] = await checkLoginState()
+
+      if (err) {
+        push('/login')
+        return
+      }
+
+      const { code, msg } = ret
+
+      if (code !== 0) {
+        push('/login')
+        return
+      }
+    })();
+  })
+
   return (
     <div className="not-found">
       <div className="img-wrap">
