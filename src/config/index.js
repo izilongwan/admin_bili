@@ -3,7 +3,7 @@ const m = 60 * 1000,
 
 export const baseURL = process.env.NODE_ENV === 'development'
   ? 'http://localhost:5001/api'
-  : 'http://47.107.72.91:5001/api';
+  : 'http://bili.letme.site/api';
 
 export const SIDEBAR_MENU = [
   { text: '数据爬虫', path: '/crawler' },
@@ -30,9 +30,9 @@ export const DURATION = [
   { value:  h, text: '每一小时' },
   { value:  2 * h, text: '每两小时' },
   { value:  3 * h, text: '每三小时' },
-  { value:  5 * h, text: '每五小时' },
-  { value:  10 * h, text: '每十小时' },
-  { value:  24 * h, text: '每十小时' }
+  { value:  6 * h, text: '每六小时' },
+  { value:  8 * h, text: '每八小时' },
+  { value:  12 * h, text: '每十二小时' }
 ]
 
 export const BILI = {

@@ -1,6 +1,6 @@
-import React from 'react';
-import { sorter } from '@/utils/tools';
+import { sorter } from '@/utils';
 import { Tag } from 'antd';
+import React from 'react';
 
 export const PlayCount = {
   title: () => <em className="tb-title">播放量</em>,

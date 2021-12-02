@@ -1,19 +1,25 @@
-import request from '@/utils/request'
-import API from './config'
+import { req } from './config'
 
-const req = (method, params) =>
-  request({
-    url: API.COMMON_API,
-    method: 'post',
-    data: {
-      module: 'crawler',
-      method,
-      params
-    }
-  })
+export const crawlerData = (params) => req({
+  0: {
+    module: 'crawler',
+    method: 'crawlerData',
+    params,
+  },
+})
 
-export const crawlerData = (params) => req('crawlerData', params)
+export const crawlerSettings = (params) => req({
+  0: {
+    module: 'crawler',
+    method: 'crawlerSettings',
+    params,
+  },
+})
 
-export const crawlerSettings = (params) => req('crawlerSettings', params)
-
-export const crawlerSettingsUpdate = (params) => req('crawlerSettingsUpdate', params)
+export const crawlerSettingsUpdate = (params) => req({
+  0: {
+    module: 'crawler',
+    method: 'crawlerSettingsUpdate',
+    params,
+  },
+})

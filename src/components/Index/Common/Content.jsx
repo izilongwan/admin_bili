@@ -1,30 +1,19 @@
-import React, {
-  useEffect,
-  useState,
-  useCallback,
-  forwardRef,
-  useImperativeHandle
-} from 'react';
-import { Table } from 'antd';
-import { message } from 'antd';
 import * as APICrawl from '@/api/crawl';
 import * as APIData from '@/api/data';
+import {
+  ColumnsCarousel,
+  ColumnsCrawler, ColumnsDefault, ColumnsDefault2, ColumnsESports,
+  ColumnsLive, ColumnsOrigin, ColumnsPromote, ColumnsRecord
+} from '@/components/Common/Columns';
+import { common } from '@/components/Index/Context';
 import { BILI } from '@/config';
+import { findParent } from '@/utils';
+import { message, Table } from 'antd';
+import React, {
+  forwardRef, useCallback, useEffect, useImperativeHandle, useState
+} from 'react';
 // import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { findParent } from '@/utils/tools';
-import { common } from '@/components/Index/Context';
-import {
-  ColumnsDefault2,
-  ColumnsDefault,
-  ColumnsCarousel,
-  ColumnsCrawler,
-  ColumnsESports,
-  ColumnsLive,
-  ColumnsPromote,
-  ColumnsOrigin,
-  ColumnsRecord,
-} from '@/components/Common/Columns'
 
 const { CRAWLER } = BILI;
 
@@ -112,20 +101,27 @@ const CommonContent = forwardRef((props, ref) => {
     setLoading(true);
     setData([])
 
-    const [err, res0] = isCrawlerSettings
+    const [err_0, res_0] = isCrawlerSettings
       ? await APICrawl.crawlerSettings()
       : await APIData.getData({ field, page: curPage, num: pgSize })
 
     setLoading(false);
 
-    if (err) {
-      const { msg, code } = err;
-      message.error(msg);
-      code === -1 && push('/login')
+    if (err_0) {
+      message.error(err_0.msg);
       return;
     }
 
-    const { code, msg, data: res } = res0;
+    const [err0, ret0] = res_0[0]
+
+    if (err0) {
+      const { code, msg } = err0
+      code === -1 && push('/login')
+      message.error(msg);
+      return
+    }
+
+    const { code, msg, data: res } = ret0;
 
     if (code !== 0) {
       message.error(msg);
@@ -171,11 +167,11 @@ const CommonContent = forwardRef((props, ref) => {
     })
 
   const updateData = async (modelType, item, obj) => {
-    const newItem = Object.assign({}, item)
-    let isStatusLoading = false,
-      isDurationLoading = false,
-      isTagsLoading = false,
-      isSwitchLoading = false
+    const newItem           = Object.assign({}, item)
+    let   isStatusLoading   = false,
+          isDurationLoading = false,
+          isTagsLoading     = false,
+          isSwitchLoading   = false
 
     for (const key in obj) {
       if (Object.hasOwnProperty.call(item, key)) {
@@ -215,19 +211,23 @@ const CommonContent = forwardRef((props, ref) => {
     setData(returnNewData(item))
 
     if (err) {
-      const { msg, code } = err
-      message.error(msg)
+      return
+    }
+
+    const [err0, ret0] = ret[0]
+
+    if (err0) {
+      const { msg, code } = err0
+      message.error(msg);
       code === -1 && push('/login')
       return
     }
 
-    const { code, msg, data: data0 } = ret;
+    const { code, msg, data: data0 } = ret0;
 
     if (code === 0) {
-      const newData = returnNewData({ ...newItem, ...data0 })
-
       message.success(msg);
-      setData(newData)
+      setData(returnNewData(Object.assign(newItem, data0)))
       return;
     }
 
@@ -257,18 +257,24 @@ const CommonContent = forwardRef((props, ref) => {
     resetData(field)
 
     if (err) {
-      const { code, msg } = err
-      message.error(msg);
-      code === -1 && push('/login')
       return;
     }
 
-    const { code, msg, data: ret } = res;
+    const [err0, ret0] = res[0]
+
+    if (err0) {
+      const { msg, code } = err0
+      message.error(msg);
+      code === -1 && push('/login')
+      return
+    }
+
+    const { code, msg, data: ret } = ret0;
 
     if (code === 0) {
       Object.assign(item, ret)
       setData([...data]);
-      message.success(msg);
+      message.success(`${ msg }（${ ret.crawleDataLength }）`);
       return;
     }
 
@@ -320,13 +326,20 @@ const CommonContent = forwardRef((props, ref) => {
     item.tagsLoading = false;
 
     if (err) {
-      const { code, msg } = err;
-      message.error(msg);
-      code === -1 && push('/login')
+      message.error(err.msg);
       return;
     }
 
-    const { code, msg } = res;
+    const [err0, ret0] = res[0]
+
+    if (err0) {
+      const { msg, code } = err0
+      message.error(msg);
+      code === -1 && push('/login')
+      return
+    }
+
+    const { code, msg } = ret0;
 
     if (code === 0) {
       item.tags = tags;
@@ -362,13 +375,20 @@ const CommonContent = forwardRef((props, ref) => {
     setLoading(false);
 
     if (err) {
-      const { code, msg } = err
-      message.error(msg);
-      code === -1 && push('/login')
+      message.error(err.msg);
       return;
     }
 
-    const { code, data: res, msg } = result;
+    const [err0, res0] = result[0]
+
+    if (err0) {
+      const { msg, code } = err0
+      message.error(msg);
+      code === -1 && push('/login')
+      return
+    }
+
+    const { code, data: res, msg } = res0;
 
     if (code === 0) {
       setData(res.data);

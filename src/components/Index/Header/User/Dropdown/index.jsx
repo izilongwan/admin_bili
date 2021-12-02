@@ -11,13 +11,16 @@ const Dropdown = () => {
     const [err, res] = await logout();
 
     if (err) {
-      const { code, msg } = err
-      message.error(msg);
-      code === -1 && push('/login')
       return;
     }
 
-    const { code, msg } = res;
+    const [err0, ret0] = res[0]
+
+    if (err0) {
+      return
+    }
+
+    const { code, msg } = ret0;
 
     if (code === 0) {
       push('/login');
@@ -25,6 +28,7 @@ const Dropdown = () => {
       return;
     }
 
+    code === -1 && push('/login')
     message.error(msg);
   };
 

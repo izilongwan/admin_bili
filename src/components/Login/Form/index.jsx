@@ -1,10 +1,10 @@
+import { CAPTCHA } from '@/api/config';
+import * as API from '@/api/user';
+import { makeCrypto } from '@/utils';
 import { LoginOutlined } from '@ant-design/icons';
 import { Button, Form, Input, message } from 'antd';
-import * as API from '@/api/user';
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router';
-import { makeCrypto } from '@/utils/tools';
-import { CAPTCHA } from '@/api/config';
 
 const layout = {
   labelCol: { span: 8 },
@@ -70,19 +70,23 @@ const Login = () => {
     ]
 
     if (err) {
-      const { code, msg } = err;
-
-      current.setFields(resetFields)
-      message.error(msg)
-      code === -1 && push('/login');
+      message.error(err.msg)
       return;
     }
 
-    const { code, msg } = res;
+    const [err0, ret0] = res[0]
+
+    if (err0) {
+      message.error(err0.msg)
+      return
+    }
+
+    const { code, msg } = ret0;
 
     if (code !== 0) {
       current.setFields(resetFields)
       message.error(msg)
+      code === -1 && push('/login');
       return
     }
 

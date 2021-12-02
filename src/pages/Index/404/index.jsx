@@ -11,11 +11,16 @@ const NotFound = () => {
       const [err, ret] = await checkLoginState()
 
       if (err) {
-        push('/login')
         return
       }
 
-      const { code, msg } = ret
+      const [err0, ret0] = ret[0]
+
+      if (err0) {
+        return
+      }
+
+      const { code, msg } = ret0
 
       if (code !== 0) {
         push('/login')
