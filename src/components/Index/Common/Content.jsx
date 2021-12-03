@@ -131,7 +131,8 @@ const CommonContent = forwardRef((props, ref) => {
       ? res.data.map((item, idx) => {
 
         return {
-          text: '爬取',
+          text: item.field === 'all'
+            ? '' : '爬取',
           ...CRAWLER[idx],
           ...item,
           statusLoading: false,
@@ -274,7 +275,7 @@ const CommonContent = forwardRef((props, ref) => {
     if (code === 0) {
       Object.assign(item, ret)
       setData([...data]);
-      message.success(`${ msg }（${ ret.crawleDataLength }）`);
+      message.success(`${ msg } [${ ret.crawleDataLength }]`);
       return;
     }
 

@@ -51,7 +51,7 @@ const ColumnsCrawler = [
         //   : <SyncOutlined spin /> } color="processing">
         //   success
         // </Tag>)
-        <Button
+        text && <Button
           ghost
           loading={ crawlLoading }
           className="state-btn"

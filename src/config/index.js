@@ -30,6 +30,7 @@ export const DURATION = [
   { value:  h, text: '每一小时' },
   { value:  2 * h, text: '每两小时' },
   { value:  3 * h, text: '每三小时' },
+  { value:  4 * h, text: '每四小时' },
   { value:  6 * h, text: '每六小时' },
   { value:  8 * h, text: '每八小时' },
   { value:  12 * h, text: '每十二小时' }
@@ -55,39 +56,30 @@ export const BILI = {
       text: '爬取所有',
     },
     {
-      text: '爬取',
       color: 'red'
     },
     {
-      text: '爬取',
       color: 'volcano'
     },
     {
-      text: '爬取',
       color: 'lime'
     },
     {
-      text: '爬取',
       color: 'orange'
     },
     {
-      text: '爬取',
       color: 'gold'
     },
     {
-      text: '爬取',
       color: 'purple'
     },
     {
-      text: '爬取',
       color: 'green'
     },
     {
-      text: '爬取',
       color: 'blue'
     },
     {
-      text: '爬取',
       color: 'geekblue'
     },
   ],
