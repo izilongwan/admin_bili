@@ -228,7 +228,9 @@ const CommonContent = forwardRef((props, ref) => {
 
     if (code === 0) {
       message.success(msg);
-      setData(returnNewData(Object.assign(newItem, data0)))
+      const newData = returnNewData(Object.assign(newItem, data0))
+      setData(newData)
+      _setCache({ newData })
       return;
     }
 
